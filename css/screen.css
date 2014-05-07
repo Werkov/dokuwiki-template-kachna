@@ -50,6 +50,10 @@ body {
     float:right;
     list-style: none;
 }
+#header ul.pagetools {
+    float:right;
+    list-style: none;
+}
 #menu {
     background: transparent;
     font-size: 1.2em;
