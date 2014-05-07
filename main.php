@@ -10,13 +10,11 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT == 'show');
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="robots" content="{$robots}" n:ifset="$robots">
 
         <title><?php tpl_pagetitle() ?> | <?php echo strip_tags($conf['title']) ?></title>
 
         <?php tpl_metaheaders() ?>	
-        <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
+        <?php echo tpl_favicon(array('favicon')) ?>
     </head>
 
     <body>

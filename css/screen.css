@@ -22,7 +22,7 @@ body {
 }
 
 #header h2 {
-    background-image: url('../images/kachna-mala.png');
+    background-image: url('images/kachna-mala.png');
     background-repeat: no-repeat;
     margin: 0;
     margin-left: 40px;
