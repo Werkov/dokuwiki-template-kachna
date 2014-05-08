@@ -37,11 +37,11 @@ body {
 #header h2 a {
     text-decoration: none;    
 }
-#header ul.volume-navigation {
+#volume-navigation ul {
     float:left;
     list-style: none;
 }
-#header ul.volume-navigation li {
+#volume-navigation ul  li {
     float:left;
     display:inline;
     margin-right: 10px;

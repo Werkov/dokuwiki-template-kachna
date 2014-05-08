@@ -22,11 +22,11 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT == 'show');
 
         <div class="wrapper <?php echo tpl_classes(); ?>">
             <div id="header">                
-                <h2><?php tpl_pagelink('start', $conf['title']); ?></h2>
+                <h2><?php tpl_pagelink(':start', $conf['title']); ?></h2>
 
-                <ul class="volume-navigation">
-                    <li><a href="Homepage:">TODO</a></li>                    
-                </ul>
+                <div id="volume-navigation">
+                    <?php tpl_include_page(tpl_getConf('years'), 1, 1) ?>
+                </div>
 
                 <ul class="user-navigation">
                     <?php
@@ -45,23 +45,27 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT == 'show');
                     ));
                     ?>
                 </ul>
-                <ul class="pagetools">
-                    <?php
-                    _tpl_toolsevent('pagetools', array(
-                        'edit' => tpl_action('edit', 1, 'li', 1),
-                        'revisions' => tpl_action('revisions', 1, 'li', 1),
-                        'backlink' => tpl_action('backlink', 1, 'li', 1),
-                    ));
-                    ?>
-                </ul>
+                <?php if ($showTools) { ?>
+                    <ul class="pagetools">
+                        <?php
+                        _tpl_toolsevent('pagetools', array(
+                            'edit' => tpl_action('edit', 1, 'li', 1),
+                            'revisions' => tpl_action('revisions', 1, 'li', 1),
+                            'backlink' => tpl_action('backlink', 1, 'li', 1),
+                        ));
+                        ?>
+                    </ul>
+                <?php } ?>
             </div>
         </div>
 
         <div class="wrapper">
             <!-- MENU -->
-            <div id="menu">
-                <?php tpl_include_page($conf['sidebar'], 1, 1) ?>
-            </div>
+            <?php if ($showSidebar) { ?>
+                <div id="menu">
+                    <?php tpl_include_page($conf['sidebar'], 1, 1) ?>
+                </div>
+            <?php } ?>
             <!-- CONTENT -->
             <div id="content">                
                 <?php html_msgarea() /* occasional error and info messages on top of the page */ ?>

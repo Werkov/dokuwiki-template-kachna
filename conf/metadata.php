@@ -4,6 +4,5 @@
  *
  */
 
-$meta['discussionPage']   = array('string');
-$meta['userPage']         = array('string');
 $meta['hideTools']        = array('onoff');
+$meta['years']            = array('string');
