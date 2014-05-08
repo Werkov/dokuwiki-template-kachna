@@ -6,3 +6,4 @@
 
 $conf['hideTools']        = 1;
 $conf['years']            = 'years';
+$conf['gaCode']           = '';

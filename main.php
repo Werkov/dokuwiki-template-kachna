@@ -12,30 +12,20 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT == 'show');
         <meta charset="utf-8">
 
         <title><?php tpl_pagetitle() ?> | <?php echo strip_tags($conf['title']) ?></title>
-
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <?php tpl_metaheaders() ?>	
         <?php echo tpl_favicon(array('favicon')) ?>
     </head>
 
     <body>
-        <script> document.body.className += ' js'</script>
-
-        <div class="wrapper <?php echo tpl_classes(); ?>">
-            <div id="header">                
-                <h2><?php tpl_pagelink(':start', $conf['title']); ?></h2>
-
+        <div id="container"  class="<?php echo tpl_classes(); ?>">
+            <div id="header">
+                <h2><?php tpl_link(wl(), $conf['title']) ?></h2>
                 <div id="volume-navigation">
                     <?php tpl_include_page(tpl_getConf('years'), 1, 1) ?>
                 </div>
 
-                <ul class="user-navigation">
-                    <?php
-                    if (!empty($_SERVER['REMOTE_USER'])) {
-                        echo '<li class="user">';
-                        tpl_userinfo(); /* 'Logged in as ...' */
-                        echo '</li>';
-                    }
-                    ?>
+                <ul id="user-navigation">
                     <?php
                     _tpl_toolsevent('usertools', array(
                         'admin' => tpl_action('admin', 1, 'li', 1),
@@ -45,55 +35,59 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT == 'show');
                     ));
                     ?>
                 </ul>
-                <?php if ($showTools) { ?>
-                    <ul class="pagetools">
-                        <?php
-                        _tpl_toolsevent('pagetools', array(
-                            'edit' => tpl_action('edit', 1, 'li', 1),
-                            'revisions' => tpl_action('revisions', 1, 'li', 1),
-                            'backlink' => tpl_action('backlink', 1, 'li', 1),
-                        ));
-                        ?>
-                    </ul>
-                <?php } ?>
+                <div class="clearer"></div>                
             </div>
-        </div>
-
-        <div class="wrapper">
-            <!-- MENU -->
             <?php if ($showSidebar) { ?>
-                <div id="menu">
-                    <?php tpl_include_page($conf['sidebar'], 1, 1) ?>
+                <div id="left-column">
+                    <nav id="navigation">
+                        <?php tpl_include_page($conf['sidebar'], 1, 1) ?>
+                    </nav>
                 </div>
             <?php } ?>
-            <!-- CONTENT -->
-            <div id="content">                
+            <div id="content"<?php if (!$showSidebar) { ?>class="full"<?php } ?>>
+                <a href="#navigation" id="toggle">Menu</a>
                 <?php html_msgarea() /* occasional error and info messages on top of the page */ ?>
                 <?php tpl_flush() /* flush the output buffer */ ?>
                 <?php tpl_content() /* the main content */ ?>
                 <?php tpl_flush() /* flush the output buffer */ ?>
             </div>
+            <div id="right-column">
+                <?php if ($showTools) { ?>
+                    <ul id="pagetools">
+                        <?php
+                        _tpl_toolsevent('pagetools', array(
+                            'edit' => tpl_action('edit', 1, 'li', 1, '', '', 'E'),
+                            'revisions' => tpl_action('revisions', 1, 'li', 1, '', '', 'H'),
+                            'backlink' => tpl_action('backlink', 1, 'li', 1, '', '', 'B'),
+                        ));
+                        ?>
+                    </ul>
+                <?php } ?>
+            </div>
+            <div id="footer">
+                Kachnu pořádá tým <a href="http://bazinga.sifruje.cz/">Bazinga</a>.
+            </div>
         </div>
-        <div id="footer">
-            Kachnu pořádá tým <a href="http://bazinga.sifruje.cz/">Bazinga</a>.
-        </div>
 
 
-        <!--<script type="text/javascript">
 
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-31652186-1']);
-            _gaq.push(['_trackPageview']);
+        <?php if ($gaCode = $conf['gaCode']) { ?>
+            <script type="text/javascript">
 
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', '<?php echo $gaCode ?>']);
+                _gaq.push(['_trackPageview']);
 
-        </script>-->
+                (function() {
+                    var ga = document.createElement('script');
+                    ga.type = 'text/javascript';
+                    ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(ga, s);
+                })();
+
+            </script>
+        <?php } ?>
     </body>
 </html>

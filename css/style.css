@@ -1,0 +1,156 @@
+body {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 0.75em;
+    background-color: @ini_body_background;
+    color:@ini_text;
+}
+#container {
+    padding: 0px 10px;
+}
+#content {
+    background-color: @ini_background;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow:0 0px 15px rgba(0,0,0,.4);
+}
+
+#header {
+    padding: 10px 10px;
+    margin-bottom: 20px;
+}
+#header h2 {
+    font-size: 3.5em;
+    margin: 0;
+    padding: 0.2em;
+    padding-left: 1.5em;
+    color: @ini_existing;
+    font-variant: small-caps;
+    float:left;
+    background-image: url('images/kachna.svg');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+}
+#header h2 a {
+    text-decoration: none;    
+}
+
+#navigation {
+    background: transparent;
+    font-size: 1.2em;
+    line-height: 2em;
+    padding-top: 40px;
+}
+#navigation ul {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 0;
+}
+#navigation ul li {
+    display: block;
+    list-style: none;
+}
+#navigation ul li a {
+    display: block;
+    font-weight: bolder;
+    text-decoration: none;
+    border-bottom: none;
+}
+#footer {
+    padding:50px 10px 20px 10px;
+    text-align: center;
+}
+
+#pagetools {
+    padding: 0;
+    margin: 0;
+}
+#pagetools li {
+    display:block;
+    width: 30px;
+    list-style: none;
+    margin: 3px;
+}
+#pagetools a {
+    display: block;
+    text-align: center;
+}
+#volume-navigation ul {
+    width:9em;
+}
+#volume-navigation li {
+    display:block;
+    width: 3em;
+    height: 2em;
+    list-style: none;
+    margin: 0;
+    float: left;
+    text-align: center;
+}
+#user-navigation {
+    text-align: right;
+}
+#user-navigation li {
+    list-style: none;
+    height: 2em;
+}
+
+/* General style */
+a {
+    color:@ini_link;
+}
+
+a:hover {
+    color:@ini_link_hover;
+}
+table {
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid @ini_border;
+    padding: 5px;
+}
+th {
+    background-color: @ini_background_alt;
+}
+
+/* Forms */
+input, textarea, select, button, #pagetools a {
+    background-color: @ini_background_alt;
+    border: 1px solid @ini_border;
+    border-radius: 3px;
+    color: @ini_text_alt;
+    padding: 2px;
+    margin: 1px;
+}
+
+@media screen and (max-width:40em) {
+    #container {
+        padding: 0px;
+    }
+    #header {
+        margin-bottom: 0px;
+    }
+    #header h2 {
+        font-size: 2em;
+    }
+    #navigation {
+        padding: 10px;
+    }
+    #content {
+        border-radius: 0px;
+        box-shadow: none;
+    }
+    #pagetools li {
+        float:left;
+    }
+    #user-navigation {
+        text-align: left;
+        width: 100%;
+    }
+    #user-navigation li {
+        list-style: none;
+        height: 2em;
+        padding: 0px 10px;
+        float: left;
+    }
+}
