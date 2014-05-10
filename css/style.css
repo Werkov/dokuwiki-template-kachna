@@ -102,8 +102,9 @@ a {
 a:hover {
     color:@ini_link_hover;
 }
-table {
+#content table {
     border-collapse: collapse;
+    margin: 0 auto;
 }
 td, th {
     border: 1px solid @ini_border;
