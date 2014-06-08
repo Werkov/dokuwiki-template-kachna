@@ -155,3 +155,23 @@ input, textarea, select, button, #pagetools a {
         float: left;
     }
 }
+
+.team-item {
+    border-bottom: 1px dotted @ini_border;
+}
+
+.team-item h3 {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.team-item p {
+    margin-top: 0px;
+}
+.team-item h3 .team-info {
+    color: @ini_body_background;
+    float:right;
+}
+
+.team-item h3 .team-info.paid {
+    color: @ini_text;
+}
