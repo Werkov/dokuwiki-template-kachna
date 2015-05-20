@@ -160,6 +160,10 @@ input, textarea, select, button, #pagetools a {
     border-bottom: 1px dotted @ini_border;
 }
 
+.team-item.separator {
+    border-bottom: 3px double @ini_border;
+}
+
 .team-item h3 {
     padding-bottom: 0px;
     margin-bottom: 0px;
